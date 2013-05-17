@@ -32,5 +32,8 @@ app.get '/', (req, res) ->
 	res.render 'index.ejs', {host: req.headers.host}
 
 app.post '/broadcast', (req, res) ->
-	res.send 200, 'OK' # immediately reply	
-	io.sockets.emit 'broadcast', req.body.data
+	if req.body.secret == process.env.BROADCAST_SECRET
+		res.send 200, 'OK' # immediately reply	
+		io.sockets.emit 'broadcast', req.body.data
+	else
+		res.send 402, 'NOPE'
