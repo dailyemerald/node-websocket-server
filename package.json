@@ -9,6 +9,7 @@
 	"npm": "1.2.18"
   },
   "dependencies": {
+    "coffee-script": "1.6.2",
     "express": "3.2.4",
     "ejs": "0.8.4",
     "socket.io": "0.9.14"
